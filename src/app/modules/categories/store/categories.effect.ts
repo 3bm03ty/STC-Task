@@ -45,17 +45,4 @@ export class CategoryEffects {
       })
     )
   );
-
-
-  // loadProducts$ = createEffect(() =>
-  //   this.actions$.pipe(
-  //     ofType(ProductActionTypes.LoadProducts),
-  //     mergeMap(() =>
-  //       this.productService.getProducts().pipe(
-  //         map((products) => new LoadProductsSuccess({ products })),
-  //         catchError((error) => of(new LoadProductsFailure({ error: error.message })))
-  //       )
-  //     )
-  //   )
-  // );
 }

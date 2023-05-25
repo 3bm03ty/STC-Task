@@ -1,4 +1,4 @@
-import { filter, take, tap, Observable } from 'rxjs';
+import { filter, take, tap, Observable, takeUntil, ReplaySubject } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
@@ -21,6 +21,9 @@ export class AddProductComponent implements OnInit {
   lang!: string;
   formTitle: string = "Add Product"
   buttonType = 0
+
+  private _destroyAll: ReplaySubject<unknown> = new ReplaySubject<unknown>();
+
   constructor(private _DirectionService: DirectionService, private _TranslateService: TranslateService,
     private _store: Store<AppState>, private _router: Router) {
     this.getDirection()
@@ -35,9 +38,12 @@ export class AddProductComponent implements OnInit {
             return { name: category };
           }) || []
         );
-      })
+      }),
+      takeUntil(this._destroyAll)
     );
 
+
+    
     console.log(d);
 
 
@@ -87,7 +93,8 @@ export class AddProductComponent implements OnInit {
           tap(async () => {
             console.log("Hiii");
             await this._router.navigate(['/products']);
-          })
+          }),
+          takeUntil(this._destroyAll)
         )
         .subscribe();
     } else this.productForm.markAllAsTouched();
@@ -104,7 +111,8 @@ export class AddProductComponent implements OnInit {
             return { name: category };
           }) || []
         );
-      })
+      }),
+      takeUntil(this._destroyAll)
     );
 
 

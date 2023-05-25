@@ -9,7 +9,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/shared/app.state';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CreateProduct, GetProduct, UpdateProduct } from '../../store';
+import { CreateProduct, GetProduct, ResetToDefault, UpdateProduct } from '../../store';
 import { selectCreatedProductSuccessfully, selectProduct, selectProductsList, selectUpdatedProductSuccessfully } from '../../store/products.selector';
 import { Product } from '../../interface/product';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -50,6 +50,9 @@ export class ProductFormComponent implements OnDestroy, OnInit {
     });
   }
 
+  private readonly _destroyAll: ReplaySubject<unknown> =
+  new ReplaySubject<unknown>();
+
   public productForm: FormGroup = new FormGroup<any>({
     title: new FormControl(null, [Validators.required]),
     description: new FormControl(null, [Validators.required]),
@@ -76,7 +79,8 @@ export class ProductFormComponent implements OnDestroy, OnInit {
               take(1),
               tap(async () => {
                 await this._Router.navigate(['/products']);
-              })
+              }),
+              takeUntil(this._destroyAll)
             )
             .subscribe();
         }
@@ -92,13 +96,15 @@ export class ProductFormComponent implements OnDestroy, OnInit {
             take(1),
             tap(async () => {
               await this._Router.navigate(['/products']);
-            })
+            }),
+            takeUntil(this._destroyAll)
           )
           .subscribe();
       }
     }
 
   }
+
 
   public readonly categories$: Observable<{ name: string }[] | null> =
     this._store.select(selectCategories).pipe(
@@ -110,7 +116,8 @@ export class ProductFormComponent implements OnDestroy, OnInit {
             return { name: category };
           }) || []
         );
-      })
+      }),
+      takeUntil(this._destroyAll)
     );
 
   private readonly product$: Observable<Product | null> = this._store
@@ -127,7 +134,8 @@ export class ProductFormComponent implements OnDestroy, OnInit {
         }
         this.profileImageIsLoading = false
 
-      })
+      }),
+      takeUntil(this._destroyAll)
     );
 
   ngOnInit(): void {
@@ -193,8 +201,7 @@ export class ProductFormComponent implements OnDestroy, OnInit {
     return this.domSanitizer.bypassSecurityTrustUrl(url);
   }
 
-  private readonly _destroyAll: ReplaySubject<unknown> =
-    new ReplaySubject<unknown>();
+ 
   public readonly productsList$: Observable<Product[] | null> =
     this._store.select(selectProductsList).pipe(
       filter((products) => !!products),
@@ -204,5 +211,6 @@ export class ProductFormComponent implements OnDestroy, OnInit {
   ngOnDestroy(): void {
     this._destroyAll.next(undefined);
     this._destroyAll.complete();
+    this._store.dispatch(ResetToDefault())
   }
 }

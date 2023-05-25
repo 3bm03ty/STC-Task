@@ -7,7 +7,7 @@ import { DeleteProduct, GetProducts, ResetToActions } from '../../store';
 import { selectDeletedProductSuccessfully, selectProductsList } from '../../store/products.selector';
 import { Product } from '../../interface/product';
 import { ColumnMode } from '@swimlane/ngx-datatable';
-import { ReplaySubject, Subject, filter, take, tap } from 'rxjs';
+import { ReplaySubject, Subject, filter, take, tap, takeUntil } from 'rxjs';
 import Swal from 'sweetalert2';
 import { LoaderService } from 'src/app/core/services/loader.service';
 
@@ -27,7 +27,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   constructor(private _DirectionService: DirectionService, private _TranslateService: TranslateService,
     private store: Store<AppState>,
-    private _LoaderService:LoaderService) {
+    private _LoaderService: LoaderService) {
     this.getDirection()
   }
 
@@ -53,7 +53,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.store.pipe(select(selectProductsList)).subscribe((products: Product[] | null) => {
       this.products = products || [];
       console.log(products);
-    });
+    },
+      takeUntil(this._destroyAll));
   }
 
   borderClass(row: any) {
@@ -80,7 +81,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
           take(1),
           tap(() => {
             this.store.dispatch(ResetToActions());
-          })
+          }),
+          takeUntil(this._destroyAll)
         )
         .subscribe();
       if (result.isConfirmed) {

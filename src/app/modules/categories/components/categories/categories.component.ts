@@ -59,7 +59,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
       width: '100%',
       enterAnimationDuration: 200,
     });
-    
+
   }
 
   public readonly categoryProductsList$: Observable<Product[] | null> =
@@ -76,7 +76,8 @@ export class CategoriesComponent implements OnInit, OnDestroy {
       categories = categories?.map((str: any, index: any) => { return { id: index, value: str } })
       this.categories = categories;
       console.log(categories);
-    });
+    },
+      takeUntil(this._destroyAll))
   }
 
   ngOnDestroy(): void {
