@@ -1,6 +1,6 @@
 # STC-Task
 #Angular App
-<p align="center"> <img src="https://img.shields.io/badge/Angular-15.1.3-red.svg" alt="Angular"> <img src="https://img.shields.io/badge/Node.js-14.15.4-green.svg" alt="Node.js"> <img src="https://img.shields.io/badge/npm-7.9.0-blue.svg" alt="npm"> </p>
+<p align="center"> <img src="https://img.shields.io/badge/Angular-15.1.3-red.svg" alt="Angular"> <img src="https://img.shields.io/badge/Node.js-18.13.0-green.svg" alt="Node.js"> <img src="https://img.shields.io/badge/npm-8.19.3-blue.svg" alt="npm"> </p>
 This is an Angular app. To use this app, you will need to have Node.js and npm installed on your machine.
 
 # Installation
