@@ -79,9 +79,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
           filter((deleted) => !!deleted),
           take(1),
           tap(() => {
-            // this._toaster.success(
-            //   this._translate.instant('productDeletedSuccessfully')
-            // );
             this.store.dispatch(ResetToActions());
           })
         )
@@ -106,11 +103,5 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this._destroyAll.next(undefined);
     this._destroyAll.complete();
   }
-
-
-  addNewProduct(){
-
-  }
-
 
 }

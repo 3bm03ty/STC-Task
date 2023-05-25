@@ -11,7 +11,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { TranslateModule } from '@ngx-translate/core';
 import { LoaderComponent } from './components/loader/loader.component';
-import { ModalComponent } from './components/modal/modal.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -23,7 +22,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [
     LoaderComponent,
-    ModalComponent,
     NavbarComponent,
     NotFoundComponent
   ],
@@ -46,7 +44,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   ],
   exports: [
     LoaderComponent,
-    ModalComponent,
     NavbarComponent,
     NotFoundComponent,
     CommonModule,

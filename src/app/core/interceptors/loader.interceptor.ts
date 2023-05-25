@@ -23,7 +23,7 @@ export class LoaderInterceptor implements HttpInterceptor {
         finalize(() => {
           this.totalRequests--;
           if (this.totalRequests === 0) {
-        console.log("finish");
+            console.log("finish");
 
             this._loaderService.hide();
           }
@@ -35,7 +35,7 @@ export class LoaderInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       finalize(() => {
         console.log("finish");
-        
+
         this._loaderService.hide();
       })
     );

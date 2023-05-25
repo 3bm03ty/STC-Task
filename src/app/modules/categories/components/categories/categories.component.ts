@@ -1,4 +1,4 @@
-import { Component, TemplateRef, ElementRef } from '@angular/core';
+import { Component, TemplateRef, ElementRef, OnInit, OnDestroy } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { DirectionService } from 'src/app/modules/translate/services/direction.service';
 import { ColumnMode } from '@swimlane/ngx-datatable';
@@ -16,7 +16,7 @@ import { Product } from 'src/app/modules/products/interface/product';
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.scss']
 })
-export class CategoriesComponent {
+export class CategoriesComponent implements OnInit, OnDestroy {
 
   lang!: string;
   ColumnMode = ColumnMode;
@@ -45,15 +45,6 @@ export class CategoriesComponent {
       }
     });
   }
-
-
-  // openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-  //   this.dialog.open(CategoriesComponent, {
-  //     width: '250px',
-  //     enterAnimationDuration,
-  //     exitAnimationDuration,
-  //   });
-  // }
 
   private _destroyAll: ReplaySubject<unknown> = new ReplaySubject<unknown>();
 
@@ -86,6 +77,11 @@ export class CategoriesComponent {
       this.categories = categories;
       console.log(categories);
     });
+  }
+
+  ngOnDestroy(): void {
+    this._destroyAll.next(undefined);
+    this._destroyAll.complete();
   }
 
 

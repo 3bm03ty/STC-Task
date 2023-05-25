@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { DirectionService } from 'src/app/modules/translate/services/direction.service';
-import { filter, finalize, take, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { PermissionsService } from 'src/app/core/services/permissions.service';
 
@@ -53,30 +52,21 @@ export class LoginComponent {
     this.isLoading = true; // Set the loading indicator to true
     console.log(loginForm.value);
 
-    this._AuthService.login(loginForm.value.userName, loginForm.value.password)
-      .pipe(
-        filter(
-          (response) =>
-            response?.status === 200 && response?.statusText === 'OK'
-        ),
-        take(1),  // Only take one response and unsubscribe
-        finalize(() => (this.isLoading = false)),
-        tap(async (response) => {
-          console.log(response);
-
-          localStorage.setItem('userData', JSON.stringify(response?.body));
-          if (response.body) {
-            this._PermissionsService.setPermissions([response.body.permissions]);
-            console.log(response.body);
-            if (response.body.permissions == "USER") {
-              await this._Router.navigateByUrl(`/categories/categories`);
-            } else if (response.body.permissions == "ADMIN") {
-              await this._Router.navigateByUrl(`/products/products`);
-            }
+    this._AuthService.login(loginForm.value.userName, loginForm.value.password).subscribe((res) => {
+      console.log(res);
+      if (res?.status === 200 && res?.statusText === 'OK') {
+        localStorage.setItem('userData', JSON.stringify(res?.body));
+        if (res.body) {
+          this._PermissionsService.setPermissions([res.body.permissions]);
+          console.log(res.body);
+          if (res.body.permissions == "USER") {
+            this._Router.navigateByUrl(`/categories/categories`);
+          } else if (res.body.permissions == "ADMIN") {
+            this._Router.navigateByUrl(`/products/products`);
           }
-        })
-
-      ).subscribe()
+        }
+      }
+    })
   }
 
   onFocusOutEvent() {

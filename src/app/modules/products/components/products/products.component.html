@@ -43,19 +43,13 @@
         <ngx-datatable-column [sortable]="false" name="{{ 'category.properties' | translate}}" prop="actions">
             <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
                 <div class="d-flex myStatus justify-content-center m-auto ">
-                    <!-- <div class="p-2 mx-1 rounded-3 edit" (click)="edit(row.id)"> -->
                     <div [routerLink]="'/products/updateProduct/'+row.id" class="p-2 mx-1 rounded-3 edit">
                         <img src="assets/images/edit (1).svg" style="width: 15px;">
                     </div>
-                    <!-- <div class=" p-2 mx-1 rounded-3 delete" (click)="Delete(row.id)"> -->
                     <div class=" p-2 mx-1 rounded-3 delete" (click)="deleteProduct(row.id)">
                         <img src="assets/images/delete.svg" style="width:
                             15px; cursor: pointer;">
                     </div>
-                    <!-- <div class=" p-2 mx-1 rounded-3 visit" (click)="show(row.id)"> -->
-                    <!-- <div class=" p-2 rounded-3 visit m-auto">
-                        <img src="assets/images/ic_remove_red_eye_24px.svg" style="width: 15px;">
-                    </div> -->
                 </div>
             </ng-template>
         </ngx-datatable-column>

@@ -86,8 +86,6 @@ export class AddProductComponent implements OnInit {
           take(1),
           tap(async () => {
             console.log("Hiii");
-
-            // this._toaster.success(this._translate.instant('created'));
             await this._router.navigate(['/products']);
           })
         )
