@@ -1,0 +1,38 @@
+<div class="login-page">
+  <div class="form container">
+    <h1 class="fw-bolder text-center py-2">{{'welcome'|translate}}</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)" class="login-form w-100">
+      <div class="form-floating mb-3 has-validation">
+        <input type="email" class="form-control rounded-3 w-100 px-4" [ngClass]="{
+          'is-invalid':
+          leaveInput &&
+          controls['userName'].errors &&
+          controls['userName'].touched
+          }" id="floatingInput" placeholder="name@example.com" formControlName="userName"
+          (focusout)="onFocusOutEvent()" />
+        <label for="floatingInput" class="text-muted" translate="auth.userName"></label>
+      </div>
+
+      <div class="form-floating ">
+        <input [ngClass]="{
+          'is-invalid':
+          leaveInput &&
+          controls['password'].errors &&
+          controls['password'].touched
+          }" [type]="show ? 'text' : 'password'" class="form-control rounded-3 w-100 px-4" id="floatingPassword"
+          placeholder="Password" formControlName="password" (focusout)="onFocusOutEvent()" />
+        <label for="floatingPassword" class="text-muted" translate="auth.password"></label>
+      </div>
+      <div class="d-flex justify-content-end mt-2 cursor-pointer">
+        <a class="link text-muted text-decoration-underline" [translate]="show?'auth.hidePassword':'auth.showPassword'"
+          (click)="changeType()"></a>
+      </div>
+      <div class="my-3">
+        <button type="submit" class="btn text-white w-100 rounded-3">
+          <span class="px-2" translate="auth.login"></span>
+          <span *ngIf="loading" class="spinner-border spinner-border-sm " role="status" aria-hidden="true"></span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

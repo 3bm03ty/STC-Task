@@ -1,0 +1,71 @@
+<div class="container text-center">
+    <ngx-datatable *ngIf="!(isLoading | async)" #table class="ngx-datatable material fixed-header virtualized
+        fixed-header rounded-4 tabelWidth" [rows]="categories" [rowClass]="borderClass" [columnMode]="ColumnMode.force"
+        [rowHeight]="80" [headerHeight]="50" [scrollbarH]="true" [limit]="2" [footerHeight]="50">
+
+
+        <ngx-datatable-column [sortable]="false" name="{{ 'category.categoryName' | translate}}" prop="value">
+
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="{{ 'category.properties' | translate}}" prop="actions">
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                <div class="d-flex myStatus m-auto ">
+                    <!-- <div class="p-2 mx-1 rounded-3 edit" (click)="edit(row.id)">
+                        <img src="assets/images/global/edit (1).svg" style="width: 15px;">
+                    </div>
+                    <div class=" p-2 mx-1 rounded-3 delete" (click)="Delete(row.id)">
+                        <img src="assets/images/global/delete.svg" style="width:
+                            15px; cursor: pointer;">
+                    </div> -->
+                    <!-- <div class=" p-2 mx-1 rounded-3 visit" (click)="show(row.id)"> -->
+                    <div class=" p-2 rounded-3 visit m-auto" (click)="categoryProducts(row.value, content)">
+                        <img src="assets/images/ic_remove_red_eye_24px.svg" style="width: 15px;">
+                    </div>
+
+                </div>
+            </ng-template>
+        </ngx-datatable-column>
+
+
+    </ngx-datatable>
+    <ng-template mat-dialog-title class="content" #content role="document" let-modal>
+        <mat-dialog-content>
+
+            <ngx-datatable *ngIf="categoryProductsList$ | async;" #table class="ngx-datatable material fixed-header virtualized
+        fixed-header rounded-4 tabelWidth  " [rows]="categoryProductsList$ | async" [rowClass]="borderClass"
+                [columnMode]="ColumnMode.force" [rowHeight]="100" [headerHeight]="40" [limit]="3" [footerHeight]="50">
+                <ngx-datatable-column [sortable]="false" name="{{ 'product.img' | translate}}" prop="image">
+                    <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                        <div class="d-flex myStatus m-auto text-center">
+                            <img class="m-auto" [src]="value" style="height:40px;">
+                        </div>
+                    </ng-template>
+                </ngx-datatable-column>
+
+
+                <ngx-datatable-column [width]="100" name="{{ 'product.title' | translate}}" prop="title">
+                    <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                        <div class="d-flex myStatus m-auto text-center">
+                            <p class="w-100">{{value.split(" ").splice(0, 5).join(" ")}}</p>
+                        </div>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="{{ 'product.price' | translate}}" prop="price">
+
+                </ngx-datatable-column>
+                <ngx-datatable-column name="{{ 'product.category' | translate}}" prop="category">
+
+                </ngx-datatable-column>
+                <ngx-datatable-column name="{{ 'product.rating' | translate}}" prop="rating.rate">
+
+                </ngx-datatable-column>
+                <ngx-datatable-column name="{{ 'product.count' | translate}}" prop="rating.count">
+
+                </ngx-datatable-column>
+            </ngx-datatable>
+        </mat-dialog-content>
+
+
+    </ng-template>
+</div>

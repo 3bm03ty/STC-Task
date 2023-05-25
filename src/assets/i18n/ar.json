@@ -1,0 +1,45 @@
+{
+    "welcome" : "مرحباً بعودتك",
+    "cancel": "إلغاء",
+    "updateProduct": "تعديل",
+    "addProduct": "إضافة",
+    "auth" : {
+        "userName" : "اسم المستخدم",
+        "password" : "كلمة السر",
+        "hidePassword" : "إخفاء كلمة السر",
+        "showPassword" : "إظهار كلمة السر",
+        "login" : "تسجيل الدخول",
+        "unauth" : "غير مصرح لك بالدخول الى هنا",
+        "goBack" : "الرجوع"
+    },
+    "category" : {
+        "categoryName" : "اسم الفئة",
+        "properties" : "الخصائص"
+    },
+    "product":{
+        "img" : "الصورة",
+        "title" : "الاسم",
+        "price" : "السعر",
+        "category" : "الفئة",
+        "rating" : "التقييم",
+        "count" : "العدد",
+        "description" : "الوصف",
+        "categoryIsRequired" : "الفئة مطلوبة",
+        "priceIsRequired" : "السعر مطلوب",
+        "descriptionIsRequired" : "الوصف مطلوب",
+        "titleIsRequired" : "العنوان مطلوب"
+    },
+    "nav" : {
+        "products" : "المنتجات",
+        "categories" : "الفئات",
+        "logout" : "تسجيل الخروج",
+        "english" : "انجليزي",
+        "arabic" : "عربي"
+    },
+    "uploadImage" : {
+        "maxSize" :  "أقصى حجم للصورة هو 5 ميجا",
+        "onlyImgs" : "يمكنك تحميل صور فقط",
+        "selectImage" : "إختر صورة",
+        "uploadImage" : "أسحب صورة هنا او"
+    }
+}

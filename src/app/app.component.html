@@ -1,0 +1,11 @@
+<app-navbar></app-navbar>
+<div class="main container py-5 mt-5 position-relative">
+    <!-- {{'welcome' | translate}} -->
+
+
+
+
+    <router-outlet></router-outlet>
+
+    <app-loader *ngIf="isLoading | async"></app-loader>
+</div>

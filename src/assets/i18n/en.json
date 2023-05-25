@@ -1,0 +1,45 @@
+{
+    "welcome": "Welcome",
+    "cancel": "Cancel",
+    "updateProduct": "Update Product",
+    "addProduct": "Add Product",
+    "auth": {
+        "userName": "User Name",
+        "password": "Password",
+        "hidePassword": "Hide Password",
+        "showPassword": "Show Password",
+        "login": "Login",
+        "unauth": "You do not have permission to access this page",
+        "goBack" : "Go Back"
+    },
+    "category": {
+        "categoryName": "Category",
+        "properties": "Properties"
+    },
+    "product": {
+        "img": "Image",
+        "title": "Title",
+        "price": "Price",
+        "category": "Category",
+        "rating": "Rating",
+        "count": "Count",
+        "description": "Description",
+        "categoryIsRequired": "Category is Required",
+        "priceIsRequired": "Price is Required",
+        "descriptionIsRequired": "Description is Required",
+        "titleIsRequired": "Title is Required"
+    },
+    "nav": {
+        "products": "Products",
+        "categories": "Categories",
+        "logout": "Logout",
+        "english": "English",
+        "arabic": "Arabic"
+    },
+    "uploadImage": {
+        "maxSize": "Max image size that you can upload it is 5 Megabyte",
+        "onlyImgs": "Only images are supported",
+        "selectImage": "Select Image",
+        "uploadImage": "Drag image here or"
+    }
+}

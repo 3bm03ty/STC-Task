@@ -1,0 +1,62 @@
+/* Apply styles to the ng-select component */
+::ng-deep .ng-select {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    background-color: #fff;
+}
+
+/* Apply styles to the selected option */
+::ng-deep .ng-select-container .ng-value-container {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Apply styles to the dropdown list */
+::ng-deep .ng-select .ng-dropdown-panel {
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    box-shadow: none;
+    background-color: #fff;
+    // padding: 10px;
+    left: 0;
+}
+
+/* Apply styles to the options in the dropdown list */
+::ng-deep .ng-select .ng-option {
+    font-size: 14px;
+    color: #333;
+    padding: 5px;
+}
+
+::ng-deep .ng-select .ng-option:hover {
+    background-color: #605b5bb1;
+    color: white;
+}
+
+/* Apply styles to the selected option in the dropdown list */
+::ng-deep .ng-select .ng-option.selected {
+    background-color: #f0f0f0;
+}
+
+::ng-deep ng-select {
+    padding: 10px;
+    cursor: text;
+}
+
+::ng-deep .ng-select-container,
+::ng-deep .ng-value-container {
+    cursor: text;
+
+}
+
+.user_image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 12px;
+}

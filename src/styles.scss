@@ -1,0 +1,174 @@
+$mainColor: #506499;
+$primaryColor: rgb(2, 30, 107);
+
+
+.directionRTL {
+  direction: rtl;
+}
+
+.directionLTR {
+  direction: ltr;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.form-floating>.form-control,
+.form-floating>.form-control-plaintext {
+  padding-left: 2.2rem;
+  padding-right: 2.2rem;
+}
+
+.form-floating>.form-control,
+.form-floating>.form-control-plaintext,
+.form-floating>.form-select {
+  height: 50px;
+}
+
+
+.form-floating>.form-control-plaintext~label,
+.form-floating>.form-control:focus~label,
+.form-floating>.form-control:not(:placeholder-shown)~label,
+.form-floating>.form-select~label {
+  transform: scale(1) translateY(-1rem) translateX(-0.3rem);
+}
+
+.form-control:focus {
+  //   background-color: $fourthColor !important;
+  border: unset !important;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgb(80 100 153/ 15%) !important;
+}
+
+
+
+// //show icon
+.visit {
+  background-color: rgba(60, 196, 128, 0.1);
+  cursor: pointer;
+}
+
+.datatable-header-cell,
+.datatable-header {
+  background-color: $mainColor !important;
+  color: white !important;
+  text-align: center !important;
+}
+
+.row-border {
+  border-bottom: 1px solid #ccc;
+}
+
+.datatable-body-cell {
+  text-align: center !important;
+}
+
+.datatable-body-cell-label {
+  margin-top: 10px;
+}
+
+.ngx-datatable .datatable-footer .datatable-pager {
+  text-align: center !important;
+}
+
+.ngx-datatable.material .datatable-footer .datatable-pager li.active a {
+  background-color: $primaryColor !important;
+  color: #f0f0f0;
+}
+
+.ngx-datatable.material .datatable-footer .datatable-pager a {
+  height: 28px !important;
+  min-width: 28px !important;
+  line-height: 30px !important;
+  padding: 0 6px !important;
+  border-radius: 5px !important;
+}
+
+[class^="datatable-icon-"]::before,
+[class*=" datatable-icon-"]::before {
+  line-height: 28px;
+  font-size: 25px;
+}
+
+[class^="datatable-icon-"]::after,
+[class*=" datatable-icon-"]::after {
+  line-height: 28px;
+}
+
+.ngx-datatable.material .datatable-footer .page-count {
+  display: none !important;
+}
+
+datatable-row-wrapper {
+  width: fit-content !important;
+}
+
+.ngx-datatable.material .datatable-footer {
+  border-top: unset !important;
+}
+
+.ngx-datatable.fixed-row .datatable-scroll,
+.ngx-datatable.fixed-row .datatable-scroll .datatable-body-row {
+  width: fit-content !important;
+}
+
+.ngx-datatable.fixed-row .datatable-scroll .datatable-body-row .datatable-body-cell,
+.ngx-datatable.fixed-row .datatable-scroll .datatable-body-row .datatable-body-group-cell {
+  overflow: unset !important;
+}
+
+
+.ngx-datatable-cell {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+::ng-deep .ng-star-inserted {
+  white-space: pre-line !important;
+}
+
+
+::ng-deep .ngx-datatable .datatable-header {
+  display: flex !important;
+  align-items: center;
+}
+
+
+//edit icon
+.edit {
+  background-color: rgba(0, 58, 219, 0.1);
+  cursor: pointer;
+}
+
+//delete icon
+.delete {
+  background-color: rgba(255, 65, 65, 0.1);
+  cursor: pointer;
+}
+
+.myButton {
+  height: 45px;
+}
+
+
+.btn-color {
+  background-color: rgb(200, 3, 89);
+  color: white;
+  padding-top: 0% !important;
+  padding-bottom: 0% !important;
+}
+.btn-color:hover{
+  background-color: rgb(177, 4, 79);
+  color: white;
+  
+}
+
+.overlay {
+  background-color: #F5F5F5;
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
